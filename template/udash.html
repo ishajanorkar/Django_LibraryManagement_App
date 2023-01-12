@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Lib</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Responsive navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#!">LibApp</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'index_page' %}">Home</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'logout_page' %}">LogOut</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="{% url 'Login_page' %}">LogIn</a></li> -->
+          <!-- <li class="nav-item"><a class="nav-link" href="{% url 'borrow_page' %}">Borrow Book</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'udash_page' %}">Borrow Details</li> -->
+          <!-- <li class="nav-item"><a class="nav-link" href="{% url 'singUp_page' %}">Sing Up</a></li>     -->
+          <!-- <li class="nav-item"><a class="nav-link" href="{% url 'Login_page' %}">LogIn</a></li> -->
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Header - set the background image for the header in the line below-->
+  <header class="py-5 bg-image-full"
+    style="background-image: url('https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=600')">
+    <div class="text-center my-5">
+      <!-- <img class="img-fluid rounded-circle mb-4" src="#" alt="..."> -->
+      <h1 class="text-white fs-3 fw-bolder">We've got what you need!</h1>
+      <p class="text-white-50 mb-0">If you cant't find it here, you won't find it anywhere!</p>
+    </div>
+  </header>
+
+  <br>
+  <br>
+  <div class="col-md-12">
+    <a href="{% url 'borrow_page' %}"><button class="btn btn-success">Borrow a Book</button></a>
+  </div>
+  <br>
+  <br>
+  <div class="col-md-12">
+    <table class="table table-hover" style="padding: 10px;">
+      <thead>
+        <tr>
+          <th scope="col">Book Title</th>
+          <th scope="col">Book Category</th>
+          <!-- <th scope="col">ISBN</th> -->
+          <th scope="col">Author</th>
+          <!-- <th scope="col">Is Active</th> -->
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for x in data %}
+        <tr>
+          <td scope="row">{{x.btitle}}</td>
+
+          {% if x.cat == 1 %}
+          <td>NOVEL</td>
+          {% elif x.cat == 2 %}
+          <td>FICTION</td>
+          {% elif x.cat == 3 %}
+          <td>BIOGRAPHY</td>
+          {% elif x.cat == 4 %}
+          <td>AUTOBIOGRAPHY</td>
+          {% elif x.cat == 5 %}
+          <td>POETRY</td>
+          {% else %}
+          <td>NON-FICTION</td>
+          {% endif %}
+
+
+          <!-- <td>{{x.isbn}}</td> -->
+
+          {% if x.Aname == 1 %}
+          <td>J K Rowling</td>
+          {% elif x.Aname == 2 %}
+          <td>Paulo Coelho</td>
+          {% elif x.Aname == 3 %}
+          <td>Maya Angelous</td>
+          {% elif x.Aname == 4 %}
+          <td>Stephen King</td>
+          {% elif x.Aname == 5 %}
+          <td>Haruki Murakami</td>
+          {% else %}
+          <td>Salman Rushdie</td>
+          {% endif %}
+
+
+          <!-- {% if x.active == 1 %}
+        <td>YES</td>
+        {% else %}
+        <td>NO</td>
+        {% endif %} -->
+
+          <td><a href="edit/{{x.id}}"><button class="btn btn-warning">Edit</button></a></td>
+          <td><a href="delete/{{x.id}}"><button class="btn btn-danger">Delete</button></a></td>
+
+
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <hr>
+  <hr>
+
+  <div class="col-md-12 mt-5" margin="20px;">
+    <h4>Filter By Category</h4>
+    <hr>
+    <a href="/udash"><button class="btn btn-success btn-sm">All</button></a>
+    <a href="/catfilter/1"><button class="btn btn-success btn-sm">NOVELS</button></a>
+    <a href="/catfilter/2"><button class="btn btn-success btn-sm">FICTION</button></a>
+    <a href="/catfilter/3"><button class="btn btn-success btn-sm">BIOGRAPHY'S</button></a>
+    <a href="/catfilter/4"><button class="btn btn-success btn-sm">AUTOBIOGRAPHY'S</button></a>
+    <a href="/catfilter/5"><button class="btn btn-success btn-sm">POETRY'S</button></a>
+    <a href="/catfilter/6"><button class="btn btn-success btn-sm">NON-FICTIONS</button></a>
+  </div>
+
+  <hr>
+
+  <div class="col-md-12 mt-5" margin="20px;">
+    <h4>Filter By Author</h4>
+    <hr>
+    <a href="/udash"><button class="btn btn-success btn-sm">All</button></a>
+    <a href="/authfilter/1"><button class="btn btn-success btn-sm">J K Rowling</button></a>
+    <a href="/authfilter/2"><button class="btn btn-success btn-sm">Paulo Coelho</button></a>
+    <a href="/authfilter/3"><button class="btn btn-success btn-sm">Maya Angelous</button></a>
+    <a href="/authfilter/4"><button class="btn btn-success btn-sm">Stephen King</button></a>
+    <a href="/authfilter/5"><button class="btn btn-success btn-sm">Haruki Murakami</button></a>
+    <a href="/authfilter/6"><button class="btn btn-success btn-sm">Salman Rushdie</button></a>
+  </div>
+  <br>
+  <br>
+  <br>
+
+  <!-- <div class="col-md-5 mt-5">
+
+  <h4>Filter Active</h4>
+  <hr>
+  <a href="/actfilter/1">Yes</a> <br>
+  <a href="/actfilter/0">No</a> <br>
+
+</div> -->

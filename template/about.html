@@ -1,0 +1,60 @@
+{% load static %}
+{% block 'main' %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Lib</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="static/css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#!">LibApp</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'index_page' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'about_page' %}">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'borrow_page' %}">Borrow </a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'udash_page' %}">Details</li>  
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Login_page' %}">LogIn</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="{% url 'singUp_page' %}">Sing Up</a></li>   -->
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header - set the background image for the header in the line below-->
+         <header class="py-5 bg-image-full" style="background-image: url('https://images.pexels.com/photos/1472841/pexels-photo-1472841.jpeg?auto=compress&cs=tinysrgb&w=600')">
+            <div class="text-center my-5">
+                <!-- <img class="img-fluid rounded-circle mb-4" src="#" alt="..." /> -->
+                <h1 class="text-white fs-3 fw-bolder">know more about us</h1>
+                <p class="text-white-50 mb-0">"Nothing is Pleasanter than Exploring a Library."</p> <br> <br><br>
+                <a class="btn btn-light btn-xl" href="#">Find Out More Below!</a>
+            </div>
+        </header>
+        <section class="page-section" id="about">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="text-white mt-0">We've got what you need!</h2>
+                        <hr class="divider divider-light" />
+                        <p class="text-white-75 mb-4">If you cant't find it here, you won't find it anywhere!</p>
+                        <a class="btn btn-light btn-xl" href="#">Let's Explore!</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+
+{% endblock 'main' %}
+{% include 'footer.html' %}

@@ -1,0 +1,90 @@
+{% load static %}
+{% block 'main' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Lib</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="static/css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#!">LibApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                    <li class="nav-item"><a class="nav-link " aria-current="page"
+                            href="{% url 'about_page' %}">About</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="{% url 'borrow_page' %}">Borrow Book</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'udash_page' %}">Borrow Details</li> -->
+                        <li class="nav-item"><a class="nav-link" href="{% url 'singUp_page' %}">Sing Up</a></li>    
+                        <!-- <li class="nav-item"><a class="nav-link" href="{% url 'Login_page' %}">LogIn</a></li> -->
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header - set the background image for the header in the line below-->
+    <header class="py-5 bg-image-full"
+        style="background-image: url('https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&w=600')">
+        <div class="text-center my-5">
+            <img class="img-fluid rounded-circle mb-4"
+                src="https://images.pexels.com/photos/279222/pexels-photo-279222.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="..." />
+            <h1 class="text-white fs-3 fw-bolder">The Treasure Of BOOK Hunters</h1>
+            <p class="text-white-50 mb-0">"There's no such thing as too many book's!"</p> <br>
+            <a class="btn btn-danger " href="{% url 'singUp_page' %}">Sign Up</a>
+            <!-- <a class="btn btn-danger " href="{% url 'Login_page' %}">LogIn</a> -->
+        </div>
+    </header>
+
+    <center>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 mt-5">
+                    <form method="POST" action="/Login">
+                        {% csrf_token %}
+                        <table>
+                            {% for x in form %}
+                            <tr>
+                                <th>{{x.label_tag}}</th>
+                                <td>{{x}}</td>
+                                <!-- <td>{{x.help_text}}</td> -->
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td><input type="submit" class="btn btn-primary" value="LogIn"></td>
+                            </tr>
+
+                        </table>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </center>
+
+
+
+
+</body>
+
+</html>
+<br>
+<br>
+{% endblock 'main' %}
+{% include 'footer.html' %}
